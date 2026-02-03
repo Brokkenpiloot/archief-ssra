@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SSRA Archief – Overzicht</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page archive-page">
+      <section class="intro">
+        <p class="eyebrow">SSRA Archief</p>
+        <h1>Welkom bij het archief</h1>
+        <p class="lede">
+          Je bent ingelogd. Kies een jaar om het archief te bekijken.
+        </p>
+      </section>
+
+      <section class="card archive-card" aria-label="Archiefnavigatie">
+        <h2>Jaren</h2>
+        <div class="year-list" id="year-list" role="list"></div>
+      </section>
+    </main>
+
+    <script>
+      const yearList = document.getElementById("year-list");
+      for (let year = 2026; year >= 1889; year -= 1) {
+        const link = document.createElement("a");
+        link.className = "year-button";
+        link.href = `year.html?year=${year}`;
+        link.textContent = String(year);
+        yearList.appendChild(link);
+      }
+    </script>
+  </body>
+</html>

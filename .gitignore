@@ -9,6 +9,10 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Env files
+.env
+.env.*
+
 # Node (if used later)
 node_modules/
 package-lock.json

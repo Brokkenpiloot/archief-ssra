@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SSRA Archief</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <!-- Welcome and purpose for members and alumni -->
+      <section class="intro">
+        <p class="eyebrow">SSRA Archief</p>
+        <h1>Welkom, leden en reünisten</h1>
+        <p class="lede">
+          Dit archief is de centrale plek voor leden en alumni om de geschiedenis
+          van SSRA te verkennen, documenten te raadplegen en herinneringen terug
+          te vinden.
+        </p>
+      </section>
+
+      <!-- Classic login card (non-functional buttons) -->
+      <section class="card" aria-label="Inloggen">
+        <h2>Inloggen</h2>
+        <form class="login-form" id="login-form">
+          <label class="field">
+            <span>E-mailadres</span>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              inputmode="email"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span>Wachtwoord</span>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+
+          <button type="submit" class="btn btn-primary">Log in</button>
+
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+
+          <div class="actions">
+            <button type="button" class="btn btn-text">
+              Forgot my password
+            </button>
+            <button type="button" class="btn btn-text">Request access</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script type="module">
+      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+      const SUPABASE_URL = "https://gmdmswhbofwhjjtusqmv.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "sb_publishable_6U19BqcGAwVf8-cs-Ak7fQ_Pr2Wc8M8";
+
+      const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const loginForm = document.getElementById("login-form");
+      const statusMessage = document.getElementById("status");
+
+      const normalizeEmail = () => {
+        if (!emailInput.value) return;
+        emailInput.value = emailInput.value.trim().toLowerCase();
+      };
+
+      emailInput.addEventListener("blur", normalizeEmail);
+      loginForm.addEventListener("submit", async (event) => {
+        normalizeEmail();
+        event.preventDefault();
+
+        statusMessage.textContent = "Signing in...";
+
+        const { error } = await supabase.auth.signInWithPassword({
+          email: emailInput.value,
+          password: passwordInput.value,
+        });
+
+        if (error) {
+          statusMessage.textContent = `Login failed: ${error.message}`;
+          return;
+        }
+
+        statusMessage.textContent = "Login successful.";
+        window.location.href = "archive.html";
+      });
+    </script>
+  </body>
+</html>

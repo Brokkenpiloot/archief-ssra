@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SSRA Archief – Jaar</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page year-page">
+      <section class="intro">
+        <p class="eyebrow">SSRA Archief</p>
+        <h1 id="year-title">Jaar</h1>
+        <p class="lede">
+          Dit overzicht is voorbereid voor PDF-bestanden die later uit de
+          database worden geladen.
+        </p>
+        <a class="btn btn-text" href="archive.html">Terug naar jaren</a>
+      </section>
+
+      <section class="card year-card" aria-label="Archiefbestanden">
+        <h2>Documenten (PDF)</h2>
+        <div class="pdf-list" id="pdf-list">
+          <div class="pdf-item pdf-empty">
+            Nog geen documenten beschikbaar.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const year = params.get("year") || "Onbekend jaar";
+      document.getElementById("year-title").textContent = `Jaar ${year}`;
+    </script>
+  </body>
+</html>

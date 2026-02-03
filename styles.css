@@ -1,0 +1,201 @@
+:root {
+  /* Primary brand palette, adjust when official hex is confirmed. */
+  --primary: #5a2d82;
+  --primary-dark: #4a246c;
+  --text: #1f1b25;
+  --muted: #6b6472;
+  --surface: #ffffff;
+  --border: #e3dde9;
+  --background: #f7f2fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--background);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  gap: 48px;
+  align-items: center;
+  padding: 64px 10vw;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.intro h1 {
+  margin: 8px 0 16px;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  color: var(--primary);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.lede {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 12px 30px rgba(24, 16, 35, 0.08);
+}
+
+.card h2 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+}
+
+.login-form {
+  display: grid;
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.field input {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(90, 45, 130, 0.15);
+}
+
+.btn {
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 16px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.status {
+  margin: 4px 0 0;
+  min-height: 1.2em;
+  color: var(--muted);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--primary);
+  padding: 0;
+}
+
+.btn-text:hover {
+  text-decoration: underline;
+}
+
+.archive-page {
+  align-items: start;
+}
+
+.archive-card {
+  min-height: 360px;
+}
+
+.year-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 10px;
+  max-height: 460px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.year-button {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  text-align: center;
+  text-decoration: none;
+}
+
+.year-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(90, 45, 130, 0.06);
+}
+
+.year-page {
+  align-items: start;
+}
+
+.year-card {
+  min-height: 360px;
+}
+
+.pdf-list {
+  display: grid;
+  gap: 12px;
+}
+
+.pdf-item {
+  padding: 12px 14px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+}
+
+.pdf-empty {
+  background: rgba(90, 45, 130, 0.04);
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 48px 6vw;
+  }
+
+  .card {
+    padding: 24px;
+  }
+}

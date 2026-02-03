@@ -22,3 +22,8 @@ This document defines **initial conventions** for planning and documentation. Th
 
 - Use simple, direct language.
 - Avoid jargon unless necessary.
+
+## 5. Security and secrets
+
+- Never commit secrets (API keys, database URLs, service role keys)
+- Store secrets in environment variables and keep them out of version control
